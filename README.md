@@ -6,8 +6,8 @@ This repository contains a straight-forward implementation of the algorithm as a
 
 ## Usage
 Simply add the file to your Matlab path and call it using your point sets in format [3xn]. Please note that the point correspondences are based on the order of the two point sets; thus both matrices must have the same dimension. The output is a [3x3] rotation matrix (R), a [3x1] transformation vector (t) and scaling factor (c):
-- **[R, t, c] = umeyama(X, Y)** *Transformation estimation to match points Y to points X*
-- **[R, t, c] = umeyama(X, Y, true)** *Same output, but additional figure will open to plot the result*
+- **[R, t, c] = umeyama_scaled(X, Y)** *Transformation estimation to match points Y to points X*
+- **[R, t, c] = umeyama_scaled(X, Y, true)** *Same output, but additional figure will open to plot the result*
 
 ### License
 Free to use and adapt in any way you like; for official purposes please use MIT license.
