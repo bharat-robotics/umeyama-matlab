@@ -22,4 +22,4 @@ package_results = 'dso-husky-indoor.txt';
 
 [gt_coords,pkg_coords] = interpolate(gt_results,package_results);
 
-[R_res, t_res] = umeyama(pkg_coords,gt_coords,true);
+[R_res, t_res, c] = umeyama_scaled(pkg_coords,gt_coords,true);

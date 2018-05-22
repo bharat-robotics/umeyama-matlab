@@ -2,7 +2,6 @@ function [ground_truth_coords,package_coords] = interpolate(gt_file,pkg_file)
 %INTERPOLATE Interpolate to find the package coordinate
 %   points at ground truth timestamp
 
-
     % Ground truth reading from file
     GC = textscan(fopen(gt_file),'%f,%f,%f'); %without z
     % GC = textscan(fopen(gt_results),'%f,%f,%f,%f'); with z
@@ -16,10 +15,9 @@ function [ground_truth_coords,package_coords] = interpolate(gt_file,pkg_file)
     % my package has time,x,y,z,qx,qy,qz,qw but we just need time,
     pk_T = C{1}; % Time stamps.
     px = C{2}; % Xs
-    py = C{3}; % Ys
-    pz = zeros([length(px),1]); % Zs 
-    % pz = GC {4} if z is present
-
+    py = zeros([length(px),1]); % Ys
+    pz = C{4}; %Zs
+        
     first_stamp = pk_T(1);  %first stamp where the visual odometry initailized
     gt_first_index = 1;        %index where the ground truth 
     
@@ -51,9 +49,9 @@ function [ground_truth_coords,package_coords] = interpolate(gt_file,pkg_file)
         end
         
         if not(upperflag) && lowerflag
-            package_coords(:,n) = [px(max_lower),py(max_lower),px(max_lower)];
+            package_coords(:,n) = [px(max_lower),py(max_lower),pz(max_lower)];
         elseif not(lowerflag) && upperflag
-            package_coords(:,n) = [px(min_upper),py(min_upper),px(min_upper)];
+            package_coords(:,n) = [px(min_upper),py(min_upper),pz(min_upper)];
         elseif not(upperflag) && not(lowerflag)
             break % not damn sure!
         else
