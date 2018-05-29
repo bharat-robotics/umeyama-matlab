@@ -21,7 +21,8 @@ function [ground_truth_coords,package_coords] = interpolate(gt_file,pkg_file)
     pz = C{4}; %Zs
         
     first_stamp = pk_T(1);  %first stamp where the visual odometry initailized
-    gt_first_index = 1;        %index where the ground truth 
+    gt_first_index = 1;     %index of ground truth where visual odometry worked
+                                
     
     while gt_T(gt_first_index) < first_stamp
         gt_first_index = gt_first_index + 1;
