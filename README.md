@@ -17,7 +17,7 @@ Returns set of package coordinates that match the ground truth coordinates in th
 Sometimes visual odometry package take some time to initialize, points in ground truth before package is initialized are ignored. 
 
 
-This method assumes that timestamp of ground truth and package coordinates are same. However, they some package may output the timestamp when it is run. In this case, some extra processing may be required to match the time stamps. This matching is not done in the code.
+This method assumes that timestamp of ground truth and package coordinates are same. Grouth truth time stamp are original time when bag file was recorded. However, they some package may output the timestamp when it is run. In this case, some extra processing may be required to match the time stamps. This matching is not done in the code.
 
 ### Umeyama
 Simply add the file to your Matlab path and call it using your point sets in format [3xn]. Please note that the point correspondences are based on the order of the two point sets; thus both matrices must have the same dimension. The output is a [3x3] rotation matrix (R), a [3x1] transformation vector (t) and scaling factor (c):
