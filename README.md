@@ -24,9 +24,6 @@ Simply add the file to your Matlab path and call it using your point sets in for
 - **[R, t, c] = umeyama_scaled(X, Y)** *Transformation estimation to match points Y to points X*
 - **[R, t, c] = umeyama_scaled(X, Y, true)** *Same output, but additional figure will open to plot the result*
 
-### License
-Free to use and adapt in any way you like; for official purposes please use MIT license.
-
 ## References
 [1] Umeyama S. Least-squares estimation of transformation parameters between two point patterns. IEEE Trans Pattern Anal Mach Intell. 1991;13:376-380. doi:10.1109/34.88573.
 
