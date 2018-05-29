@@ -7,13 +7,16 @@ Shinji Umeyama presented in 1991 a quick and simple algorithm [1] to estimate th
 Example of the full implementation is in **mse.m** file.
 
 ### Interpolation
-Inputs - Ground truth file, package result file \s
+Inputs - Ground truth file, package result file
+
 Format - timestamp, x, y, z
 
 Returns set of package coordinates that match the ground truth coordinates in the ground truth time stamp that will be used for point correspondence. The output coordinates are of same size [3xn]  so that two points at same index correspond to each other. 
 - **[gt_coords, pkg_coords] = interpolate(gt_file,pkg_files)**
 
-Sometimes visual odometry package take some time to initialize, points in ground truth before package is initialized are ignored. \s
+Sometimes visual odometry package take some time to initialize, points in ground truth before package is initialized are ignored. 
+
+
 This method assumes that timestamp of ground truth and package coordinates are same. However, they some package may output the timestamp when it is run. In this case, some extra processing may be required to match the time stamps. This matching is not done in the code.
 
 ### Umeyama
