@@ -12,10 +12,12 @@ function [ground_truth_coords,package_coords] = interpolate(gt_file,pkg_file)
     % gz = GC {4} if z is present
 
     C = textscan(fopen(pkg_file), '%f,%f,%f,%f,%f,%f,%f,%f');
-    % my package has time,x,y,z,qx,qy,qz,qw but we just need time,
+    % my package has time,x,y,z,qx,qy,qz,qw but we just need time,x,y,z
     pk_T = C{1}; % Time stamps.
     px = C{2}; % Xs
-    py = zeros([length(px),1]); % Ys
+    % Considering only planar py=zeros([length(px),1]);
+    % based on camera coordinate system
+    py = C{3}; % Ys
     pz = C{4}; %Zs
         
     first_stamp = pk_T(1);  %first stamp where the visual odometry initailized
@@ -24,7 +26,7 @@ function [ground_truth_coords,package_coords] = interpolate(gt_file,pkg_file)
     while gt_T(gt_first_index) < first_stamp
         gt_first_index = gt_first_index + 1;
     end
-
+    
     gt_last_index = size(gt_T,1);   %last index of ground truth
     pkg_last_index = size(pk_T,1);  %pkg last index
     

@@ -45,12 +45,12 @@ t = mean_Y - c * ( R * mean_X);
 %% Plotting
 if nargin>2 && plotResult
     figure('name','Result of Umeyama registration');
-    scatter3(X(1,:),X(2,:),X(3,:),'g*');
+    scatter3(X(1,:),X(2,:),X(3,:),'g','*');
     hold on;
-    scatter3(Y(1,:),Y(2,:),Y(3,:),'bo');
+    scatter3(Y(1,:),Y(2,:),Y(3,:),'b','o');
     rot = c*R;
     X_prime = [rot t; 0 0 0 1] * [X;ones(1,size(X,2))];
-    scatter3(X_prime(1,:),X_prime(2,:),X_prime(3,:),'r*');
+    scatter3(X_prime(1,:),X_prime(2,:),X_prime(3,:),'r','*');
     axis equal tight;
     legend('Source points','Destination points','Transformation result');
     MEAN_REGISTRATION_ERROR = norm(mean(abs(Y - X_prime(1:3,:)),2))

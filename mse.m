@@ -20,6 +20,7 @@
 gt_results = 'gt-husky-indoor-ordered.csv';
 package_results = 'dso-husky-indoor.txt';
 
+% must return 3xn vector where n is the number of points
 [gt_coords,pkg_coords] = interpolate(gt_results,package_results);
 
 [R_res, t_res, c] = umeyama_scaled(pkg_coords,gt_coords,true);
